@@ -1,0 +1,125 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <p class="register-account" style="margin-top: 20px; bottom: 28px;">Already have an account ? <a routerLink="../login">Login</a> Here</p>
+
+    <div class="card">
+        <h4 class="card-header">Registration Form</h4>
+        <div class="card-body">
+
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="userType">Registration Type</label> <br>
+                    <select name="userType" id="userType" formControlName="userType">
+                        <option value="farmer" >Farmer</option>
+                        <option value="buyer" >Buyer</option>
+                      </select>
+                      
+                    <div  class="invalid-feedback" class="invalid-feedback">
+                        <div>Registration type is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">email</label>
+                    <input type="text" formControlName="email" class="form-control" />
+                    <div  class="invalid-feedback" class="invalid-feedback">
+                        <div>Email is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="firstName">firstName</label>
+                    <input type="text" formControlName="firstName" class="form-control" />
+                    <div  class="invalid-feedback" class="invalid-feedback">
+                        <div>firstName is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">lastName</label>
+                    <input type="text" formControlName="lastName" class="form-control" />
+                    <div  class="invalid-feedback" class="invalid-feedback">
+                        <div>lastName is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contactNo">Contact No</label>
+                    <input type="number" formControlName="contactNo" class="form-control" />
+                    <div  class="invalid-feedback" class="invalid-feedback">
+                        <div>contactNo is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="aadharNumber">aadharNumber</label>
+                    <input type="number" formControlName="aadharNumber" class="form-control" />
+                    <div  class="invalid-feedback" class="invalid-feedback">
+                        <div>aadharNumber is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="panNo">Pan Card No</label>
+                    <input type="text" formControlName="panNo" class="form-control" />
+                    <div  class="invalid-feedback" class="invalid-feedback">
+                        <div>Pan No is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label><br>
+                    <label class="radio-inline">
+                        <input type="radio" name="gender" value="M" formControlName="gender" checked>Male
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="gender" value="F" formControlName="gender">Female
+                      </label>
+                    <div  class="invalid-feedback" class="invalid-feedback">
+                        <div>gender is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthDate">Birthday:</label> <br>
+                    <input type="date" id="birthDate" formControlName="birthDate" name="birthDate">
+                    <div  class="invalid-feedback" class="invalid-feedback">
+                        <div>Date is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="address" formControlName="address" class="form-control" />
+                    <div class="invalid-feedback" class="invalid-feedback">
+                        <div>Address is required</div>
+                    </div>
+                </div>
+                <div formGroupName="geo">
+                    <div class="form-group">
+                        <label for="geoLocation" style="width: 100%;">GeoLocation</label>
+                        <span class="inline">
+                            <input type="number" formControlName="lat" class="form-control btn-inline"  />
+                            <input type="number" formControlName="lon" class="form-control btn-inline"  />
+                        </span>
+                        <button class="btn btn-primary" (click)="getLocation(); $event.preventDefault()">Get location</button>
+                        <div class="invalid-feedback" class="invalid-feedback">
+                            <div>Geo Location is required</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control" />
+                    <div class="invalid-feedback" class="invalid-feedback">
+                        <div>Password is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confPass">Confirm Password</label>
+                    <input type="password" formControlName="confPass" class="form-control" />
+                    <div class="invalid-feedback" class="invalid-feedback">
+                        <div>Confirm Password is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Register
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+
+</div>

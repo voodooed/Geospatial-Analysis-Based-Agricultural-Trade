@@ -1,0 +1,64 @@
+<div class="card mt-4">
+    <div class="card-header">
+        <h2 style="text-align: center;">My Cart</h2>
+    </div>
+    <div class="card-body" *ngIf="!emptyCart">
+        <div *ngFor = "let item of cartItems">
+            <div style="    display: inline-block;
+            border: solid 1px #808080;
+            padding: 15px; width: 100%;">
+                <div style="float: left;">
+                    <img style="width: 150px; height: 150px;" src="{{item.cropId.imageUrl}}">
+                </div>
+                <div style="    width: 50%;
+                float: left;
+                margin-left: 28px;">
+                    <h2>{{item.cropId.cropName}}</h2>
+                    <p>{{item.cropId.description}}</p>
+                    <h3>Farmer: {{item.cropId.farmerId.firstName}} {{item.cropId.farmerId.lastName}}</h3> 
+                </div>
+                <div style="    float: left;
+                margin: 30px 20px 20px 20px;
+                width: 9%;">
+                    <div>
+                        <h4>Quantity:  {{item.quantity}}</h4>
+                    </div>
+                    <div >
+                        <h4>price : {{item.price}}</h4> 
+                    </div>
+                    <div>
+                        <h4>Total : {{item.total}}</h4> 
+                    </div>
+                </div>
+                
+                <div class="input-group" style="width: 14%;
+                float: right;
+                padding: 10px;
+                margin-top: 35px;">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-danger btn-number" style="height: 100%;" data-type="minus" data-field="quant[2]" (click)="addToCart(item.cropId._id, 1)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                              </svg>
+                        </button>
+                    </span>
+                    <input type="text" name="quant[2]" class="form-control input-number" style="padding: 0;" value="{{item.quantity}}" min="1" max="100">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-success btn-number" style="height: 100%;" data-type="plus" data-field="quant[2]" (click)="addToCart(item.cropId._id, -1)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                <path d="M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z"/>
+                              </svg>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div><h2>Total: {{subTotal}}</h2></div>
+            <button style="float: right;" class="btn btn-primary" (click)="placeOrder()">Place Order</button>
+        </div>
+    </div>
+    <div class="card-body" *ngIf="emptyCart">
+        <h3 style="text-align: center;">Cart is Empty</h3>
+    </div>
+</div>

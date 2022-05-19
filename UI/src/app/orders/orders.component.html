@@ -1,0 +1,41 @@
+<div class="card mt-4">
+    <div class="card-header">
+        <h2 style="text-align: center;">My Orders</h2>
+    </div>
+    <div class="card-body" *ngIf="!noOrder">
+        <div *ngFor = "let order of orderList">
+            
+            <div style="    display: inline-block;
+            border: solid 1px #808080;
+            padding: 15px; width: 100%;">
+                <div style="float: left;">
+                    <img style="width: 150px; height: 150px;" src="{{order.crops.cropId.imageUrl}}">
+                </div>
+                <div style="    width: 50%;
+                float: left;
+                margin-left: 28px;">
+                    <h2>{{order.crops.cropId.cropName}}</h2>
+                    <p>{{order.crops.cropId.description}}</p>
+                    <h3 *ngIf="!isFarmer">Farmer: {{order.crops.cropId.farmerId.firstName}} {{order.crops.cropId.farmerId.lastName}}</h3> 
+                    <p><b>Delivery Address: </b>{{order.address}}</p>
+                </div>
+                <div style="    float: left;
+                margin: 5px 20px 20px 20px;
+                width: 9%;">
+                    <div>
+                        <h4><b>Quantity: </b> {{order.crops.quantity}}</h4>
+                    </div>
+                    <div >
+                        <h4><b>price: </b> {{order.crops.price}}</h4> 
+                    </div>
+                    <div>
+                        <h4><b>Total: </b> {{order.crops.total}}</h4> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" *ngIf="noOrder">
+        <h3 style="text-align: center;">No Orders</h3>
+    </div>
+</div>

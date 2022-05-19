@@ -1,0 +1,44 @@
+<div class="card mt-4">
+    <div class="card-header">
+        <h4 class="float-left">Crops</h4>
+        <button class="btn btn-primary float-right" [routerLink]="['/addCrop']">Add Crop</button>
+
+    </div>
+    <div class="card-body">
+        <div *ngFor = "let crop of cropList">
+            <div style="    display: inline-block;
+            border: solid 1px #808080;
+            padding: 15px; width: 100%;">
+                <div style="float: left;">
+                    <img style="width: 150px; height: 150px;" src="{{crop.imageUrl}}">
+                </div>
+                <div style="    width: 50%;
+                float: left;
+                margin-left: 28px;">
+                    <h4>{{crop.cropName}}</h4>
+                    <p>{{crop.description}}</p>
+                </div>
+                <div style="    float: left;
+                margin: 30px 20px 20px 20px;
+                width: 9%;">
+                    <div style="padding-bottom: 20px;">
+                        <h5>Quantity:</h5> {{crop.quantity}}
+                    </div>
+                    <div style="padding-bottom: 20px;">
+                        <h5>price :</h5> {{crop.price}}
+                    </div>
+                </div>
+                <div style="width: 14%;
+                float: right;
+                padding: 10px;
+                margin-top: 26px;">
+                    <button class="btn btn-primary" style="width: 84% ;margin-bottom: 32px;" [routerLink]="['/updateCrop', crop._id]">Edit</button><br>
+                    <button class="btn btn-danger cust-btn" style="width: 84%;" (click)="deleteCrop(crop._id)">Delete</button>
+
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+</div>

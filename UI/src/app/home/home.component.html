@@ -1,0 +1,31 @@
+﻿<div class="card mt-4">
+    <div class="card-header">
+        <h2 style="text-align: center;">Crop Types</h2>
+    </div>
+    <div class="card-body">
+        <div *ngFor = "let crop of cropTypes">
+            <div style="    display: inline-block;
+            border: solid 1px #808080;
+            padding: 15px; width: 100%;">
+                <!--div style="float: left;">
+                    <img style="width: 150px; height: 150px;" src="{{crop}}">
+                </div-->
+                <div style="    width: 50%;
+                float: left;
+                margin-left: 28px;
+                margin-top: 24px;">
+                    <h2>{{crop}}</h2>
+                </div>
+                
+                <div style="width: 14%;
+                float: right;
+                padding: 10px;
+               ;">
+                    <button class="btn btn-primary" style="width: 100% ;" [routerLink]="['/buyerList', crop]">See All Suppliers</button><br>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+</div>

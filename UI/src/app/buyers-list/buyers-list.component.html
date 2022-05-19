@@ -1,0 +1,56 @@
+<div class="card mt-4">
+    <div class="card-header">
+        <h2 style="text-align: center;">Supplier List</h2>
+    </div>
+    <div class="card-body">
+        <div class="map">
+            <agm-map [latitude]="buyerLat" [longitude]="buyerLon" 
+            [zoom]="10"
+            [usePanning]='true'
+           >
+                <agm-marker  *ngFor="let marker of markers"
+                [latitude]="marker.lat" 
+                [longitude]="marker.lon">
+    </agm-marker>
+              </agm-map>     
+        </div>
+        <div *ngFor = "let crop of cropList">
+            <div style="    display: inline-block;
+            border: solid 1px #808080;
+            padding: 15px; width: 100%;">
+                <div style="float: left;">
+                    <img style="width: 150px; height: 150px;" src="{{crop.imageUrl}}">
+                </div>
+                <div style="    width: 50%;
+                float: left;
+                margin-left: 28px;">
+                    <h2>{{crop.cropName}}</h2>
+                    <p>{{crop.description}}</p>
+                    <h3>Farmer: {{crop.farmerId.firstName}} {{crop.farmerId.lastName}}</h3> 
+                    <p>{{crop.distanceFromFarmer}} away from your location</p>
+                </div>
+                <div style="    float: left;
+                margin: 30px 20px 20px 20px;
+                width: 9%;">
+                    <div>
+                        <h4>Quantity:  {{crop.quantity}}</h4>
+                    </div>
+                    <div >
+                        <h4>price : {{crop.price}}</h4> 
+                    </div>
+                    <div>
+                        <h4>Quality : {{crop.quality}}</h4> 
+                    </div>
+                </div>
+                <div style="width: 14%;
+                float: right;
+                padding: 10px;
+                margin-top: 35px;">
+                    <button class="btn btn-primary" style="width: 100% ;" (click)="addToCart(crop._id, 1)">Add to Cart</button><br>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+</div>
